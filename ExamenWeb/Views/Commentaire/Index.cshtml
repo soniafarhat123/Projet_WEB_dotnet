@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Domain.Commentaire>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbreNote)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbreNote)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCommentaire">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdCommentaire">Details</a> |
+
+                    @Html.ActionLink("Supprimer","Delete",new {id=item.IdCommentaire})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
